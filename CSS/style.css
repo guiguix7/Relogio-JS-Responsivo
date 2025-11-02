@@ -1,0 +1,419 @@
+/* Reset e box-sizing */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Variáveis de tema */
+:root {
+    /* Tema claro (padrão) */
+    --bg-gradient: linear-gradient(135deg, #e7e8bb 0%, #ffffff 100%);
+    --page-bg-color: #f4f7fb;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --primary-color: #2563eb;
+    --accent-color: #06b6d4;
+    --text-color: #0f172a;
+    --muted-color: #465266;
+    --header-bg: rgb(80, 157, 239);
+    --footer-bg: rgb(80, 157, 239);
+    --shadow: 0 6px 18px rgba(16, 24, 40, 0.08);
+    --font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --page-max-width: 1200px;
+    /* base font-size: mobile-first. Use rem in layout */
+    font-size: 16px;
+}
+
+/* Tema escuro */
+body.dark {
+    --bg-gradient: linear-gradient(135deg, #0f172a 0%, #071026 100%);
+    --page-bg-color: #071026;
+    --card-bg: rgba(10, 14, 20, 0.7);
+    --primary-color: #60a5fa;
+    --accent-color: #34d399;
+    --text-color: #e6eef8;
+    --muted-color: #9fb2c8;
+    --header-bg: rgb(7, 57, 110);
+    --footer-bg: rgb(7, 57, 110);
+    --shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+}
+
+/* Global */
+/* Global: mobile-first base */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-family);
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    /* evita overflow horizontal em telas pequenas */
+}
+
+/* -----------------------
+   Header (topo da página)
+   ----------------------- */
+/* Header: compact em mobile, escala para cima em queries */
+header {
+    background: var(--header-bg);
+    color: var(--text-color);
+    padding: 0.7rem 0.9rem;
+    /* mobile-first padding */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* overlay full-screen para transição de tema (esquerda -> direita) */
+/* Este overlay cobre toda a página durante a animação; o JS define --overlay-color
+   para o gradiente/cor de destino e adiciona/removes a classe body.theme-animate. */
+/* Overlay usado na animação de tema (mantido) */
+body::after {
+    content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: transform 1s cubic-bezier(.2, .8, .2, 1);
+    z-index: 9999;
+    pointer-events: none;
+    background: var(--overlay-color, transparent);
+}
+
+/* quando em animação, o overlay desliza da esquerda para a direita cobrindo a página; */
+body.theme-animate::after {
+    transform: translateX(100%);
+}
+
+/* transições suaves para elementos principais quando o tema muda (evita pulos visuais)
+   Nota: gradientes não animam diretamente; o overlay ainda garante a transição visual
+   mas cores/textos e sombras terão uma transição suave. */
+/* transições suaves para mudanças de tema */
+header,
+footer,
+.relogio,
+body {
+    transition: color 350ms ease, background-color 350ms ease, box-shadow 350ms ease, border-color 350ms ease;
+}
+
+header h1 {
+    font-size: 1.05rem;
+    letter-spacing: 1px;
+}
+
+.btn-tema {
+    display: flex;
+    align-items: center
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    gap: .5rem
+}
+
+/* ícones da toggle são responsivos */
+.toggle img {
+    width: 1.25rem;
+    height: 1.25rem;
+    opacity: .9;
+    max-width: 100%;
+    display: block
+}
+
+.toggle>input {
+    display: none;
+}
+
+.toggle>label {
+    position: relative;
+    display: block;
+    height: 2rem;
+    width: 3.5rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 100px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.toggle>label:after {
+    position: absolute;
+    left: .2rem;
+    top: .2rem;
+    display: block;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 100px;
+    background: linear-gradient(180deg, #ffffff, #f1f5f9);
+    box-shadow: 0 4px 8px rgba(2, 6, 23, 0.08);
+    content: '';
+    transition: all .25s cubic-bezier(.2, .9, .3, 1)
+}
+
+.toggle>label:active:after {
+    transform: scale(1.05);
+}
+
+.toggle>input:checked~label {
+    background-color: rgba(0, 0, 0, 0.18);
+    border-color: rgba(255, 255, 255, 0.08)
+}
+
+.toggle>input:checked~label:after {
+    left: calc(3.5rem - 1.8rem)
+}
+
+/* -----------------------
+   Main / Header-main area
+   ----------------------- */
+/* Main: centralizado, cartão flui em largura */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 auto;
+    padding: 1.25rem
+}
+
+.header-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem
+}
+
+main h2 {
+    margin: .5rem;
+    font-size: clamp(1.25rem, 2.1vw, 2.8rem);
+    font-weight: 600;
+    color: var(--text-color)
+}
+
+/* bloco de temperatura / ícone */
+/* ícone de clima: manter proporção e responsividade */
+.ft-clima {
+    width: 3rem;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: .625rem;
+    box-shadow: 0 8px 20px rgba(2, 6, 23, 0.08);
+    transition: transform .25s ease, filter .25s ease, width .2s ease, height .2s ease
+}
+
+/* Estado no tema escuro */
+body.dark .ft-clima {
+    filter: brightness(.95) contrast(1.05);
+}
+
+@media (max-width: 520px) {
+    .ft-clima {
+        width: 48px;
+        height: 48px;
+    }
+
+    .header-main {
+        gap: 8px;
+    }
+}
+
+/* -----------------------
+   Relógio (cartão)
+   ----------------------- */
+/* Cartão do relógio: mobile-first, largura fluida */
+.relogio {
+    width: 96%;
+    max-width: 760px;
+    background: var(--card-bg);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    align-items: center
+}
+
+/* -----------------------
+   Hora (dígitos)
+   ----------------------- */
+.hora {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .75rem;
+    flex-wrap: wrap
+}
+
+.hora h3 {
+    font-weight: 600;
+    font-size: clamp(1.25rem, 6vw, 2.6rem);
+    color: var(--text-color)
+}
+
+.hora h3 span {
+    display: inline-block;
+    min-width: 5.5rem;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.02));
+    padding: .6rem .8rem;
+    border-radius: .75rem;
+    box-shadow: inset 0 -6px 18px rgba(16, 24, 40, 0.02)
+}
+
+.hora h3:nth-child(2),
+.hora h3:nth-child(4) {
+    font-size: clamp(1rem, 3.5vw, 2.4rem);
+    color: var(--muted-color)
+}
+
+/* -----------------------
+   Data
+   ----------------------- */
+.data {
+    display: flex;
+    justify-content: center;
+    gap: .4rem;
+    flex-wrap: wrap;
+    color: var(--muted-color)
+}
+
+.data h3 {
+    font-weight: 500;
+    font-size: clamp(.85rem, 1.8vw, 1rem)
+}
+
+/* -----------------------
+   Footer
+   ----------------------- */
+footer {
+    text-align: center;
+    padding: .65rem 1rem;
+    color: var(--text-color);
+    font-size: .9rem;
+    background: var(--footer-bg)
+}
+
+/* -----------------------
+   Responsividade
+   ----------------------- */
+/* Media queries mobile-first usando em (aprox):
+   - small/mobile: até ~30em (padrão)
+   - tablet: a partir de 30em (~480px)
+   - desktop: a partir de 48em (~768px)
+   - large/ultrawide: a partir de 75em (~1200px)
+*/
+
+@media (min-width: 30em) {
+
+    /* tablet */
+    header {
+        padding: .9rem 1.1rem
+    }
+
+    header h1 {
+        font-size: 1.15rem
+    }
+
+    .relogio {
+        padding: 1.25rem 1.5rem
+    }
+
+    .ft-clima {
+        width: 3.6rem
+    }
+}
+
+@media (min-width: 48em) {
+
+    /* desktop: mantém visual idêntico ao design original */
+    header {
+        padding: 1.1rem 1.75rem
+    }
+
+    header h1 {
+        font-size: 1.45rem
+    }
+
+    .relogio {
+        max-width: 760px;
+        padding: 1.75rem 2rem;
+        border-radius: 1rem
+    }
+
+    .hora h3 {
+        font-size: 3.6rem
+    }
+
+    .hora h3 span {
+        min-width: 7.5rem;
+        padding: 1.1rem 1.5rem
+    }
+
+    .ft-clima {
+        width: 40px
+    }
+}
+
+@media (min-width: 75em) {
+
+    /* extra large: amplia espaços mantendo proporções */
+    main {
+        padding: 2rem
+    }
+
+    .relogio {
+        max-width: var(--page-max-width);
+        padding: 2rem 2.5rem
+    }
+
+    .hora h3 {
+        font-size: clamp(2.4rem, 2.8vw, 3.8rem)
+    }
+
+    .hora h3 span {
+        min-width: 9rem;
+        padding: 1.25rem 1.75rem
+    }
+}
+
+/* Pequeno ajuste para imagens e elementos responsivos em geral */
+img,
+picture,
+svg {
+    max-width: 100%;
+    height: auto;
+    display: block
+}
+
+/* garante que nenhum conteúdo exceda a largura do viewport */
+.relogio,
+header,
+footer,
+main {
+    max-width: 100%;
+    box-sizing: border-box
+}
+
+/* estado do tema para pequenas correções visuais */
+body.dark .toggle img {
+    filter: brightness(1.2) contrast(1.1)
+}
+
+/* Pequeno ajuste visual para imagens da toggle em tema escuro */
+body.dark .toggle img {
+    filter: brightness(1.2) contrast(1.1);
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Responsividade: viewport simples mobile-first -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Guilherme Andraz">
+    <meta name="description" content="Um site Relógio Digital desenvolvido com HTML, CSS e JavaScript.">
+    <meta name="keywords" content="relógio, digital, HTML, CSS, JavaScript">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Relógio Digital</title>
+</head>
+
+<body>
+    <div class="header">
+        <header>
+            <h1 id="saudacoes">Bom Dia!</h1>
+            <div class="btn-tema">
+                <div class="toggle">
+                    <img src="ASSETS/IMG/sun.png" alt="Ícone de sol que indica o tema claro">
+                    <input type="checkbox" id="foo">
+                    <label for="foo"></label>
+                    <img src="ASSETS/IMG/lua-crescente.png" alt="Ícone de lua crescente que indica o tema escuro">
+                </div>
+            </div>
+        </header>
+    </div>
+    <main>
+        <div class="relogio">
+            <div class="header-main">
+                <div class="tempo">
+                    <h3><span id="periodo">00º</span></h3><!-- Grau Celsius -->
+                </div>
+                <h2><span id="diaSemana">Dia da Semana</span></h2>
+                <img src="ASSETS/IMG/dia-nublado.png" alt="Ícone do clima" class="ft-clima">
+            </div>
+            <br>
+            <div class="hora">
+                <h3><span id="horas">00</span></h3>
+                <h3>:</h3>
+                <h3><span id="minutos">00</span></h3>
+                <h3>:</h3>
+                <h3><span id="segundos">00</span></h3>
+            </div>
+            <div class="data">
+                <h3><span id="dia">00</span></h3> de
+                <h3><span id="mes">Mês</span></h3> de
+                <h3><span id="ano">0000</span></h3>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Guilherme Andraz. Todos os direitos reservados.</p>
+    </footer>
+    <script src="SCRIPT/script.js"></script>
+</body>
+
+</html>

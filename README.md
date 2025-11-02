@@ -65,7 +65,7 @@ Breve papel de cada item:
 
 1. Faça o download do projeto
 
-. Abra `index.html` em qualquer navegador moderno (Chrome, Edge, Firefox, Safari).
+Abra `index.html` em qualquer navegador moderno (Chrome, Edge, Firefox, Safari).
 
 Não há dependências externas nem build — é um projeto front-end estático.
 

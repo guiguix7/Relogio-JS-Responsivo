@@ -4,7 +4,7 @@ Um relógio digital elegante, responsivo e com tema claro/escuro — 100% feito 
 
 ## 📌 Descrição
 
-Este projeto exibe um relógio digital com data, saudação dinâmica (Bom dia / Boa tarde / Boa noite), indicador de temperatura ilustrativo (ícone + valor) e alternância entre modo claro e modo escuro. Foi desenvolvido como um exemplo prático de layout responsivo (mobile-first), transições suaves e boas práticas de front-end sem dependências externas.
+Este projeto exibe um relógio digital com data, saudação dinâmica (Bom dia / Boa tarde / Boa noite), indicador de temperatura ilustrativo (ícone + valor) e alternância entre modo claro e modo escuro. Foi desenvolvido como um exemplo prático de layout responsivo (mobile-first), transições suaves e boas práticas de front-end sem dependências externas. Esse é um projeto front-end, e não possui: back-end, banco de dados e API.
 
 - Tecnologias: HTML5, CSS3 e JavaScript (ES6).
 - Público-alvo: desenvolvedores aprendendo responsividade, temas dinâmicos e manipulação do DOM.
@@ -12,8 +12,6 @@ Este projeto exibe um relógio digital com data, saudação dinâmica (Bom dia /
 Frase curta: Design minimalista, acessível e pronto para mobile — leve e direto ao ponto.
 
 ## 🎯 Demonstração visual
-
-Insira aqui uma captura de tela ou GIF do relógio funcionando:
 
 ```markdown
 ![Preview do Projeto](./ASSETS/IMG/preview.png)
@@ -59,23 +57,15 @@ Breve papel de cada item:
 - `SCRIPT/script.js` — lógica de atualização do relógio, saudação dinâmica, seleção de ícones de clima, persistência do tema em `localStorage` e animação de transição.
 - `ASSETS/IMG/` — imagens e ícones (sol, lua, clima etc.).
 
-## ▶️ Como executar localmente
+## ▶️ Como executar localmente (Opção 1)
 
-Siga estes passos simples:
+1. Clique no ([link do projeto]https://guiguix7.github.io/Relogio-JS-Responsivo/)
 
-1. Clone o repositório:
+## ▶️ Como executar localmente (Opção 2)
 
-```bash
-git clone https://github.com/usuario/relogio-digital.git
-```
+1. Faça o download do projeto
 
-2. Acesse a pasta do projeto:
-
-```bash
-cd relogio-digital
-```
-
-3. Abra `index.html` em qualquer navegador moderno (Chrome, Edge, Firefox, Safari).
+. Abra `index.html` em qualquer navegador moderno (Chrome, Edge, Firefox, Safari).
 
 Não há dependências externas nem build — é um projeto front-end estático.
 
@@ -174,7 +164,7 @@ Comentários:
 Desenvolvido por Guilherme Andraz.
 
 - Direitos reservados © 2025 Guilherme Andraz.
-- Perfil GitHub: ([adicione o link do seu perfil aqui](https://github.com/guiguix7))
+- Perfil GitHub: ([@oguiguix7](https://github.com/guiguix7))
 
 ## 📜 Licença
 

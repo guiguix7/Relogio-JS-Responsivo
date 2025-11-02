@@ -59,7 +59,7 @@ Breve papel de cada item:
 
 ## ▶️ Como executar localmente (Opção 1)
 
-1. Clique no ([link do projeto]https://guiguix7.github.io/Relogio-JS-Responsivo/)
+1. Clique no link do projeto: https://guiguix7.github.io/Relogio-JS-Responsivo/
 
 ## ▶️ Como executar localmente (Opção 2)
 
